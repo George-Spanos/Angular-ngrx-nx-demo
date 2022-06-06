@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, NgModule, OnDestroy, OnInit } from '@angular/core';
-import { NgrxFormsFacade } from '../+state/forms.facade';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
+import { NgrxFormsFacade } from '../+state/forms.facade';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-list-errors',
+  selector: 'conduit-list-errors',
   standalone: true,
   templateUrl: './list-errors.component.html',
   styleUrls: ['./list-errors.component.css'],

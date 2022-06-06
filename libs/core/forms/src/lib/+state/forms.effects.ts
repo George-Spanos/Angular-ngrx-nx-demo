@@ -5,12 +5,12 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class NgrxFormsEffects {
-  setData$ = createEffect(() =>
-    this.actions$.pipe(
+  setData$ = createEffect(() => {
+    return this.actions$.pipe(
       ofType(NgrxFormsActions.setData, NgrxFormsActions.updateData),
       map(() => NgrxFormsActions.initializeErrors()),
-    ),
-  );
+    );
+  });
 
   constructor(private actions$: Actions) {}
 }

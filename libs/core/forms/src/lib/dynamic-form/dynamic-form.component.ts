@@ -9,16 +9,16 @@ import { DynamicFieldDirectiveModule } from './dynamic-field.directive';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-dynamic-form',
+  selector: 'conduit-dynamic-form',
   templateUrl: './dynamic-form.component.html',
   styleUrls: ['./dynamic-form.component.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicFormComponent implements OnInit {
   @Input() structure$!: Observable<Field[]>;
-  @Input() data$!: Observable<any>;
+  @Input() data$!: Observable<unknown>;
   @Input() touchedForm$!: Observable<boolean>;
-  @Output() updateForm: EventEmitter<any> = new EventEmitter();
+  @Output() updateForm: EventEmitter<void> = new EventEmitter();
   form!: FormGroup;
 
   constructor(private fb: FormBuilder) {}
@@ -40,7 +40,7 @@ export class DynamicFormComponent implements OnInit {
           filter((t) => !t && !!this.form),
           untilDestroyed(this),
         )
-        .subscribe((_) => this.form.reset());
+        .subscribe(() => this.form.reset());
     }
   }
 
@@ -55,7 +55,7 @@ export class DynamicFormComponent implements OnInit {
   };
 
   private patchValue = ([form, data]: [FormGroup, any]) => {
-    !!data ? form.patchValue(data, { emitEvent: false }) : form.patchValue({}, { emitEvent: false });
+    data ? form.patchValue(data, { emitEvent: false }) : form.patchValue({}, { emitEvent: false });
   };
 
   private listenFormChanges(form: FormGroup) {

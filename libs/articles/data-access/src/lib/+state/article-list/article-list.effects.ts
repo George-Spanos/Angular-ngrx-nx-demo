@@ -12,22 +12,22 @@ import { ArticlesFacade } from '../articles.facade';
 
 @Injectable()
 export class ArticleListEffects {
-  setListPage = createEffect(() =>
-    this.actions$.pipe(
+  setListPage = createEffect(() => {
+    return this.actions$.pipe(
       ofType(articleListActions.setListPage),
       map(() => articleListActions.loadArticles()),
-    ),
-  );
+    );
+  });
 
-  setListTag = createEffect(() =>
-    this.actions$.pipe(
+  setListTag = createEffect(() => {
+    return this.actions$.pipe(
       ofType(articleListActions.setListConfig),
       map(() => articleListActions.loadArticles()),
-    ),
-  );
+    );
+  });
 
-  loadArticles = createEffect(() =>
-    this.actions$.pipe(
+  loadArticles = createEffect(() => {
+    return this.actions$.pipe(
       ofType(articleListActions.loadArticles),
       concatLatestFrom(() => this.facade.listConfig$),
       concatMap(([_, config]) =>
@@ -41,11 +41,11 @@ export class ArticleListEffects {
           catchError((error) => of(articleListActions.loadArticlesFailure({ error }))),
         ),
       ),
-    ),
-  );
+    );
+  });
 
-  favorite = createEffect(() =>
-    this.actions$.pipe(
+  favorite = createEffect(() => {
+    return this.actions$.pipe(
       ofType(articlesActions.favorite),
       concatMap(({ slug }) =>
         this.actionsService.favorite(slug).pipe(
@@ -53,11 +53,11 @@ export class ArticleListEffects {
           catchError((error) => of(articlesActions.favoriteFailure(error))),
         ),
       ),
-    ),
-  );
+    );
+  });
 
-  unFavorite = createEffect(() =>
-    this.actions$.pipe(
+  unFavorite = createEffect(() => {
+    return this.actions$.pipe(
       ofType(articlesActions.unfavorite),
       concatMap(({ slug }) =>
         this.actionsService.unfavorite(slug).pipe(
@@ -65,8 +65,8 @@ export class ArticleListEffects {
           catchError((error) => of(articlesActions.unfavoriteFailure(error))),
         ),
       ),
-    ),
-  );
+    );
+  });
 
   constructor(
     private actions$: Actions,

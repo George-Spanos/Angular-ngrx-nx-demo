@@ -2,8 +2,8 @@ import { importProvidersFrom } from '@angular/core';
 import { Routes } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ArticleEditEffects, articleFeature } from '@realworld/articles/data-access';
-import { AuthGuardService } from '@realworld/auth/data-access';
+import { ArticleEditEffects, articleFeature } from '@realworld/articles/data-access/src';
+import { AuthGuardService } from '@realworld/auth/data-access/src';
 import { ArticleEditResolverService } from './article-edit-resolver.service';
 import { ArticleEditComponent } from './article-edit.component';
 

@@ -93,5 +93,6 @@
       },
       "outputs": ["coverage/apps/conduit"]
     }
-  }
+  },
+  "tags": ["type:lib"]
 }
