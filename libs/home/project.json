@@ -11,5 +11,6 @@
       "outputs": ["coverage/libs/home"]
     }
   },
+  "tags": ["type:lib"],
   "prefix": "app"
 }
