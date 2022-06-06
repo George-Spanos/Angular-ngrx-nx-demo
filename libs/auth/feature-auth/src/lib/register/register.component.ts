@@ -29,7 +29,7 @@ const structure: Field[] = [
 ];
 
 @Component({
-  selector: 'app-register',
+  selector: 'conduit-register',
   standalone: true,
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
